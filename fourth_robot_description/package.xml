@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <name>fourth_robot_description</name>
+  <version>1.0.0</version>
+  <description>The fourth_robot_description package</description>
+
+  <maintainer email="groadpg@gmail.com">Ryodo Tanaka</maintainer>
+  <license>BSD</license>
+  <url type="repository">http://github.com/CIR-KIT/fourth_robot_description</url>
+  
+  <author email="groadpg@gmail.com">Ryodo Tanaka</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+  
+</package>

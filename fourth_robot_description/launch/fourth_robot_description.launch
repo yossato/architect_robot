@@ -1,0 +1,17 @@
+<launch>
+  <!-- arguments -->
+  <arg name="model" />
+  <arg name="gui" default="False" />
+
+  <!-- params -->
+  <param name="robot_description" textfile="$(find fourth_robot_description)/urdf/fourth_robot.urdf" />
+  <param name="use_gui" value="$(arg gui)"/>
+
+  <!-- nodes -->
+  <!-- joint_state_publisher and robot_state_publisher -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+  <!-- rviz -->
+  <!-- <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find fourth_robot_description)/rviz/fourth_robot_description.rviz"/>x -->
+</launch>

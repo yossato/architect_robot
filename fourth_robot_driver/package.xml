@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <name>fourth_robot_driver</name>
+  <version>2.0.0</version>
+  <description>The fourth_robot_driver package</description>
+
+  <maintainer email="groadpg@gmail.com">Ryodo Tanaka</maintainer>
+  <license>BSD</license>
+  <url type="repository">http://github.com/Nishida-Lab/TC2015</url>
+  
+  <author email="groadpg@gmail.com">Ryodo Tanaka</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>joy</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>nav_msgs</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>joy</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+
+</package>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <name>fourth_robot_launcher</name>
+  <version>0.0.0</version>
+  <description>The fourth_robot_launcher package</description>
+
+  <maintainer email="groadpg@gmail.com">Ryodo Tanaka</maintainer>
+  <license>BSD</license>
+  <url type="repository">http://github.com/Nishida-Lab/TC2015</url>
+  
+  <author email="groadpg@gmail.com">Ryodo Tanaka</author>
+ <buildtool_depend>catkin</buildtool_depend>
+
+</package>

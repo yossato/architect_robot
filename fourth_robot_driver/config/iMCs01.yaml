@@ -1,0 +1,5 @@
+port_name            : "/dev/urbtc1"
+motor_pin_right      : 103
+motor_pin_left       : 102
+enc_pin_right        : 107
+enc_pin_left         : 106

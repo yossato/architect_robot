@@ -1,0 +1,5 @@
+twist_sub_topic   : "/cmd_vel"
+odom_pub_topic    : "/odom"
+odom_parent_frame : "odom"
+odom_child_frame  : "base_footprint"
+ros_rate          : 100
