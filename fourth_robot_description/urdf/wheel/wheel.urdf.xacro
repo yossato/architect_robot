@@ -31,10 +31,8 @@
 	  </collision>
 	  <inertial>
 		<origin xyz="0 -0.003 0" rpy="${-M_PI/2} 0 0"/>
-		<mass value="${wheel_mass}"/>
-		<inertia ixx="${((wheel_radius*wheel_radius)/4 + (wheel_length*wheel_length)/12)*wheel_mass}" ixy="0" ixz="0"
-				 iyy="${((wheel_radius*wheel_radius)/4 + (wheel_length*wheel_length)/12)*wheel_mass}" iyz="0"
-				 izz="${(wheel_mass*wheel_radius*wheel_radius)/2}" />
+		<cylinder_inertial mass="${wheel_mass}"
+						   radius="${wheel_radius}" length="${wheel_length}"/>
 	  </inertial>
 	</link>
   </xacro:macro>
