@@ -10,14 +10,14 @@
   <property name="wheel_mass" value="2.0"/>
   
   <xacro:macro name="wheel_v0" params="prefix parent *joint_origin *joint_axis">
-	<joint name="wheel_${prefix}_joint" type="continuous">
+	<joint name="${prefix}_wheel_joint" type="continuous">
 	  <insert_block name="joint_origin"/>
 	  <parent link="${parent}"/>
-	  <child link="wheel_${prefix}_link"/>
+	  <child link="_${prefix}_wheel_link"/>
 	  <insert_block name="joint_axis"/>
 	</joint>
 
-	<link name="wheel_${prefix}_link">
+	<link name="${prefix}_wheel_link">
 	  <visual>
 		<geometry>
 		  <mesh filename="package://fourth_robot_description/meshes/DAE/wheel/wheel_link.dae"/>

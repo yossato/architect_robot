@@ -2,12 +2,12 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:macro name="wheel_trans_v0" params="prefix">
-	<transmission name="wheel_${prefix}_trans">
+	<transmission name="${prefix}_wheel_trans">
       <type>transmission_interface/SimpleTransmission</type>
-      <joint name="wheel_${prefix}_joint">
+      <joint name="${prefix}_wheel_joint">
 		<hardwareInterface>VelocityJointInterface</hardwareInterface>
       </joint>
-	  <actuator name="wheel_${prefix}_motor">
+	  <actuator name="${prefix}_wheel_motor">
 		<hardwareInterface>VelocityJointInterface</hardwareInterface>
 		<mechanicalReduction>30</mechanicalReduction>
       </actuator>
