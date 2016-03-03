@@ -39,7 +39,7 @@
 
   <!-- Front LRF -->
   <xacro:lrf_v0 prefix="front" parent="base_link">
-  	<origin xyz="0.208 0 -0.0282"/>
+  	<origin xyz="0.208 0 -0.025325"/>
   </xacro:lrf_v0>
 
   <!-- Rear LRF -->
