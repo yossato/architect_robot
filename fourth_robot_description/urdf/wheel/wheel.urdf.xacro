@@ -13,7 +13,7 @@
 	<joint name="${prefix}_wheel_joint" type="continuous">
 	  <insert_block name="joint_origin"/>
 	  <parent link="${parent}"/>
-	  <child link="_${prefix}_wheel_link"/>
+	  <child link="${prefix}_wheel_link"/>
 	  <insert_block name="joint_axis"/>
 	</joint>
 
