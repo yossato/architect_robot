@@ -64,5 +64,13 @@
   <!-- Wheel -->
   <xacro:wheel_gazebo_v0 prefix="right"/>
   <xacro:wheel_gazebo_v0 prefix="left"/>
+
+  <!-- LRF -->
+  <xacro:lrf_gazebo_v0 prefix="front"
+					   min_rad="-${M_PI/2}" max_rad="${M_PI/2}"
+					   min_range="0.10" max_range="10.0"/>
+  <xacro:lrf_gazebo_v0 prefix="rear"
+					   min_rad="-${110*M_PI/180}" max_rad="${110*M_PI/180}"
+					   min_range="0.10" max_range="5.0"/>
   
 </robot>
