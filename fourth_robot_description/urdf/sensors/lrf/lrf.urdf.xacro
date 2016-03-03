@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find fourth_robot_description)/urdf/common.xacro"/>
+  <xacro:include filename="$(find fourth_robot_description)/urdf/sensors/lrf/lrf.gazebo.xacro"/>
 
   <xacro:macro name="lrf_v0" params="prefix parent *joint_origin">
 	<joint name="${prefix}_lrf_joint" type="fixed">
