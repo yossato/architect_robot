@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find fourth_robot_description)/urdf/common.xacro"/>
+  <xacro:include filename="$(find fourth_robot_description)/urdf/wheel/wheel.transmission.xacro"/>
+  <xacro:include filename="$(find fourth_robot_description)/urdf/wheel/wheel.gazebo.xacro"/>
+
+  <property name="wheel_radius" value="0.20316"/>
+  <property name="wheel_length" value="0.032"/>
+  <property name="wheel_mass" value="2.0"/>
+  
+  <xacro:macro name="wheel_v0" params="prefix parent *joint_origin *joint_axis">
+	<joint name="wheel_${prefix}_joint" type="continuous">
+	  <insert_block name="joint_origin"/>
+	  <parent link="${parent}"/>
+	  <child link="wheel_${prefix}_link"/>
+	  <insert_block name="joint_axis"/>
+	</joint>
+
+	<link name="wheel_${prefix}_link">
+	  <visual>
+		<geometry>
+		  <mesh filename="package://fourth_robot_description/meshes/DAE/wheel/wheel_link.dae"/>
+		</geometry>
+	  </visual>
+	  <collision>
+		<origin xyz="0 -0.003 0" rpy="${-M_PI/2} 0 0"/>
+		<geometry>
+		  <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
+		</geometry>
+	  </collision>
+	  <inertial>
+		<origin xyz="0 -0.003 0" rpy="${-M_PI/2} 0 0"/>
+		<mass value="${wheel_mass}"/>
+		<inertia ixx="${((wheel_radius*wheel_radius)/4 + (wheel_length*wheel_length)/12)*wheel_mass}" ixy="0" ixz="0"
+				 iyy="${((wheel_radius*wheel_radius)/4 + (wheel_length*wheel_length)/12)*wheel_mass}" iyz="0"
+				 izz="${(wheel_mass*wheel_radius*wheel_radius)/2}" />
+	  </inertial>
+	</link>
+  </xacro:macro>
+  
+</robot>

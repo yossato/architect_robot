@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="lrf_v0" params="prefix parent *joint_origin">
+	<joint name="${prefix}_lrf_joint" type="fixed">
+	  <insert_block name="joint_origin"/>
+	  <parent link="${parent}"/>
+	  <child link="${prefix}_lrf_link"/>
+	</joint>
+
+	<link name="${prefix}_lrf_link">
+	  <visual>
+		<geometry>
+		  <mesh filename="package://fourth_robot_description/meshes/DAE/sensors/${prefix}_lrf/${prefix}_lrf.dae"/>
+		</geometry>
+	  </visual>
+	</link>
+  </xacro:macro>
+
+</robot>
