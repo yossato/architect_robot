@@ -8,5 +8,4 @@
       <mu2 value="0.8" />
     </gazebo>
   </xacro:macro>
-  
 </robot>
