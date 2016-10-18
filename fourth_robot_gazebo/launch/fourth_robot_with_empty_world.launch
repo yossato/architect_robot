@@ -17,14 +17,16 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
-  <!-- Load the URDF into the ROS Parameter Server -->
-  <param name="fourth_robot/robot_description"
-		 command="$(find xacro)/xacro.py '$(arg model)'" />
-  
-  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-  		args="-urdf -model fourth_robot -param fourth_robot/robot_description"/>
+  <group ns="fourth_robot">
+	<!-- Load the URDF into the ROS Parameter Server -->
+	<param name="fourth_robot/robot_description"
+		   command="$(find xacro)/xacro.py '$(arg model)'" />
+	
+	<!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  		  args="-urdf -model fourth_robot -param fourth_robot/robot_description"/>
 
-  <!-- ros_control motoman launch file -->
-  <include file="$(find fourth_robot_control)/launch/fourth_robot_control.launch"/>
+	<!-- ros_control motoman launch file -->
+	<include file="$(find fourth_robot_control)/launch/fourth_robot_control.launch"/>
+  </group>
 </launch>
