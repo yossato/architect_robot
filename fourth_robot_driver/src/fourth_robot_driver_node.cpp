@@ -74,14 +74,15 @@ int main(int argc, char** argv)
 	
 	fourth_robot_driver.calculateOdometry(odom_trans, odom);
 	fourth_robot_driver.culcurateVelocity(odom);
+
+	odom_broadcaster.sendTransform(odom_trans);
+	odom_pub.publish(odom);
+	
 	{
 	  boost::mutex::scoped_lock(access_mutex_);
 	  local_target_vel = target_vel;
 	}
 	fourth_robot_driver.Drive(local_target_vel);
-	
-	odom_broadcaster.sendTransform(odom_trans);
-	odom_pub.publish(odom);
 
 	ros::spinOnce();
 	r.sleep();
