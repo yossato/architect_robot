@@ -1,11 +1,9 @@
 max_linear_vel       : 1.1
 max_angular_vel      : 1.7
-limit_vel_rate_right : 1.08
-limit_vel_rate_left  : 1.05
-limit_vel_step_right : 100
-limit_vel_step_left  : 100
 gain_p_right         : 0.015
 gain_i_right         : 0.0055
 gain_p_left          : 0.015
 gain_i_left          : 0.0055
+dead_zone_vel_right  : 0.05
+dead_zone_vel_left   : 0.05
 
