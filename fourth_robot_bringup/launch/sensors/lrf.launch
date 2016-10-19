@@ -1,19 +1,19 @@
 <launch>
-  <node pkg="urg_node" type="urg_node" name="urg_node_front" output="screen">
-    <remap from="scan" to="front_lrf_scan" />
-	<param name="ip_addrss" type="string" value="192.168.10.10"/>
+  <node pkg="urg_node" type="urg_node" name="urg_node" ns="front" output="screen">
+	<param name="ip_address" type="string" value="192.168.10.10"/>
 	<param name="frame_id" type="string" value="front_lrf_link"/>
 	<param name="publish_intensity" type="bool" value="true"/>
-    <param name="angle_min" type="double" value="-2.0" />
-    <param name="angle_max" type="double" value="2.0" />
+	<param name="publish_multiecho" type="bool" value="false"/>
+    <param name="angle_min" type="double" value="-1.65806278939" />
+    <param name="angle_max" type="double" value="1.65806278939" />
   </node>
 
-  <node pkg="urg_node" type="urg_node" name="urg_node_rear" output="screen">
-    <remap from="scan" to="rear_lrf_scan" />
-	<param name="ip_addrss" type="string" value="192.168.10.30"/>
+  <node pkg="urg_node" type="urg_node" name="urg_node" ns="rear" output="screen">
+	<param name="ip_address" type="string" value="192.168.10.30"/>
 	<param name="frame_id" type="string" value="rear_lrf_link"/>
 	<param name="publish_intensity" type="bool" value="true"/>
-    <param name="angle_min" type="double" value="-2.0" />
-    <param name="angle_max" type="double" value="2.0" />
+	<param name="publish_multiecho" type="bool" value="false"/>
+    <param name="angle_min" type="double" value="-2.35619449019" />
+    <param name="angle_max" type="double" value="2.35619449019" />
   </node>
 </launch>
