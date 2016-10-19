@@ -14,6 +14,8 @@
 
 #include "fourth_robot_driver/fourth_robot_driver_node.hpp"
 
+#include <sensor_msgs/JointState.h>
+
 // for debug
 #define printLOG( msg ) printf("%s,%d:%s\n",__FILE__,__LINE__,msg)
 
@@ -100,6 +102,10 @@ FourthRobotDriver::FourthRobotDriver(ros::NodeHandle &n):
 	ROS_BREAK();
   }
   // ------ end of iMCs01 ------
+
+  // ------ Joint State Publisher ------
+  js_pub = n.advertise<sensor_msgs::JointState>("/joint_states", 1);
+  
 }
 
 FourthRobotDriver::~FourthRobotDriver()
@@ -218,13 +224,7 @@ int FourthRobotDriver::getEncoderCounts()
   static int enc_cnt_right[3] = {0, 0, 0};
   static int enc_cnt_left[3] = {0, 0, 0};
   // set transform broadcaster
-  static tf::TransformBroadcaster right_tf_br;
-  static tf::TransformBroadcaster left_tf_br;
-  // set transform
-  tf::Transform right_trans;
-  tf::Transform left_trans;
-  tf::Quaternion right_q;
-  tf::Quaternion left_q;
+  sensor_msgs::JointState js;
   // for rotation
   static double sum_rad_right = 0;
   static double sum_rad_left = 0;
@@ -267,16 +267,9 @@ int FourthRobotDriver::getEncoderCounts()
   // calcurate rotation
   sum_rad_right += enc_cnt_right[2]/4000.0*M_PI;
   sum_rad_left += enc_cnt_left[2]/4000.0*M_PI;
-  right_q.setRPY(0, sum_rad_right, 0);
-  left_q.setRPY(0, sum_rad_left, 0);
-  // set tf
-  right_trans.setOrigin( tf::Vector3(0, -0.214375, 0) );
-  right_trans.setRotation(right_q);
-  left_trans.setOrigin( tf::Vector3(0, 0.214375, 0) );
-  left_trans.setRotation(left_q);
-  // bloadcast tf
-  right_tf_br.sendTransform(tf::StampedTransform(right_trans, ros::Time::now(), "base_link", "right_wheel"));
-  left_tf_br.sendTransform(tf::StampedTransform(left_trans, ros::Time::now(), "base_link", "left_wheel"));
+  js.position[0] = sum_rad_right;
+  js.position[1] = sum_rad_left;
+  js_pub.publish(js);
   // ------ finish to update the output datas ------
   
   // ------ update the past datas ------

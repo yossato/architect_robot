@@ -66,6 +66,8 @@ private:
   double max_vel_right;
   double max_vel_left;
 
+  ros::Publisher js_pub;
+
   // ------ function ------
   int openSerialPort();
   int closeSerialPort();
