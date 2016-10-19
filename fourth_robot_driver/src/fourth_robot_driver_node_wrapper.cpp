@@ -223,8 +223,11 @@ int FourthRobotDriver::getEncoderCounts()
   static double time[3] = {1, 0, 0};
   static int enc_cnt_right[3] = {0, 0, 0};
   static int enc_cnt_left[3] = {0, 0, 0};
-  // set transform broadcaster
+  // set Joint State Info
   sensor_msgs::JointState js;
+  js.header.stamp = ros::Time::now();
+  js.name.push_back("right_wheel_joint");
+  js.name.push_back("left_wheel_joint");
   // for rotation
   static double sum_rad_right = 0;
   static double sum_rad_left = 0;
@@ -266,9 +269,9 @@ int FourthRobotDriver::getEncoderCounts()
 
   // calcurate rotation
   sum_rad_right += enc_cnt_right[2]/4000.0*M_PI;
-  sum_rad_left += enc_cnt_left[2]/4000.0*M_PI;
-  js.position[0] = sum_rad_right;
-  js.position[1] = sum_rad_left;
+  sum_rad_left -= enc_cnt_left[2]/4000.0*M_PI;
+  js.position.push_back(sum_rad_right);
+  js.position.push_back(sum_rad_left);
   js_pub.publish(js);
   // ------ finish to update the output datas ------
   
