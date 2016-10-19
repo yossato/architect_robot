@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <name>fourth_robot_bringup</name>
+  <version>1.0.0</version>
+  <description>The fourth_robot_bring package</description>
+
+  <maintainer email="groadpg@gmail.com">Ryodo Tanaka</maintainer>
+  <license>BSD</license>
+  <url type="repository">http://github.com/Nishida-Lab/TC2015</url>
+  
+  <author email="groadpg@gmail.com">Ryodo Tanaka</author>
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>joy_twist</run_depend>
+  <run_depend>gim30</run_depend>
+  <run_depend>rt_usb_9axisimu_driver</run_depend>
+  <run_depend>urg_node</run_depend>
+  <run_depend>ira_laser_tools</run_depend>
+  <run_depend>ira_laser_tools</run_depend>
+  <run_depend>fourth_robot_driver</run_depend>
+
+</package>

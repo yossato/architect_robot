@@ -1,8 +1,8 @@
 <launch>
   <!-- arguments -->
-  <arg name="joy_config" default="ps3" />
   <arg name="joy_dev" default="/dev/input/js0" />
-  <arg name="robot_config" default="fourth_robot" />
+  <arg name="joy_config" default="$(find fourth_robot_bringup)/config/joy/ps3.yaml" />
+  <arg name="robot_config" default="$(find fourth_robot_bringup)/config/joy/fourth_robot.yaml" />
 
   <!-- joy_node -->
   <node respawn="true" pkg="joy" type="joy_node" name="joy">
@@ -13,8 +13,8 @@
 
   <!-- joy_twist -->
   <node pkg="joy_twist"   type="joy_twist_node"  name="joy_twist" output="screen">
-    <rosparam command="load" ns="joy_conf/" file="$(find joy_twist)/config/$(arg joy_config).yaml" />
-    <rosparam command="load" ns="robot_conf/" file="$(find joy_twist)/config/$(arg robot_config).yaml" />
+    <rosparam command="load" ns="joy_conf/" file="$(arg joy_config)" />
+    <rosparam command="load" ns="robot_conf/" file="$(arg robot_config)" />
     <param name="cmdvel_topic_name" value="cmd_vel" />
     <param name="joy_topic_name" value="joy" />
   </node>

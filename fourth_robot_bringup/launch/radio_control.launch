@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find fourth_robot_bringup)/launch/robot/driver.launch"/>
+  <include file="$(find fourth_robot_bringup)/launch/joy/joy_control.launch"/>
+</launch>
