@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>fourth_robot_bringup</name>
-  <version>0.0.0</version>
+  <version>1.0.0</version>
   <description>The fourth_robot_bring package</description>
 
   <maintainer email="groadpg@gmail.com">Ryodo Tanaka</maintainer>
@@ -14,6 +14,7 @@
   <run_depend>gim30</run_depend>
   <run_depend>rt_usb_9axisimu_driver</run_depend>
   <run_depend>urg_node</run_depend>
+  <run_depend>ira_laser_tools</run_depend>
   <run_depend>ira_laser_tools</run_depend>
   <run_depend>fourth_robot_driver</run_depend>
 
