@@ -1,17 +1,17 @@
 # 4th Robot Package [![Build Status](https://travis-ci.org/CIR-KIT/fourth_robot_pkg.svg?branch)](https://travis-ci.org/CIR-KIT/fourth_robot_pkg)
 
 ### Bring Up
-#### 1. Ethernetの設定を行う
-IP      : `192.168.10.100`
-Mask    : 24
-Gateway : `192.168.10.1`
+##### 1. Ethernetの設定を行う
+IP      : `192.168.10.100`  
+Mask    : 24  
+Gateway : `192.168.10.1`  
 
-#### 2. Path通し
+##### 2. Path通し
 ```bash
 source <catkin_ws>/devel/setup.bash
 ```
 
-#### 3. urbtcを有効に
+##### 3. urbtcを有効に
 ```bash
 source <fourth_robot_driver>/script/module.sh
 ```
