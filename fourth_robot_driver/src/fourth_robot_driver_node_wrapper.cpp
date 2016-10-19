@@ -14,6 +14,9 @@
 
 #include "fourth_robot_driver/fourth_robot_driver_node.hpp"
 
+// for debug
+#define printLOG( msg ) printf("%s,%d:%s\n",__FILE__,__LINE__,msg)
+
 using namespace std;
 
 FourthRobotDriver::FourthRobotDriver(ros::NodeHandle &n):
@@ -31,14 +34,12 @@ FourthRobotDriver::FourthRobotDriver(ros::NodeHandle &n):
   wheel_diameter_left(0.38695),
   max_linear_vel(1.1),
   max_angular_vel(M_PI),
-  limit_vel_rate_right(1.05),
-  limit_vel_rate_left(1.05),
-  limit_vel_step_right(100),
-  limit_vel_step_left(100),
   gain_p_right(1.0),
   gain_i_right(0),
   gain_p_left(1.0),
   gain_i_left(0),
+  dead_zone_vel_right(0.05),
+  dead_zone_vel_left(0.05),
   motor_pin_right(103),
   motor_pin_left(102),
   enc_pin_right(107),
@@ -58,14 +59,12 @@ FourthRobotDriver::FourthRobotDriver(ros::NodeHandle &n):
   // control
   n.param("fourth_robot_driver/control/max_linear_vel", max_linear_vel, max_linear_vel);
   n.param("fourth_robot_driver/control/max_angular_vel", max_angular_vel, max_angular_vel);
-  n.param("fourth_robot_driver/control/limit_vel_rate_right", limit_vel_rate_right, limit_vel_rate_right);
-  n.param("fourth_robot_driver/control/limit_vel_rate_left", limit_vel_rate_left, limit_vel_rate_left);
-  n.param("fourth_robot_driver/control/limit_vel_step_right", limit_vel_step_right, limit_vel_step_right);
-  n.param("fourth_robot_driver/control/limit_vel_step_left", limit_vel_step_left, limit_vel_step_left);
   n.param("fourth_robot_driver/control/gain_p_right", gain_p_right, gain_p_right);
   n.param("fourth_robot_driver/control/gain_i_right", gain_i_right, gain_i_right);
   n.param("fourth_robot_driver/control/gain_p_left", gain_p_left, gain_p_left);
   n.param("fourth_robot_driver/control/gain_i_left", gain_i_left, gain_i_left);
+  n.param("fourth_robot_driver/control/dead_zone_vel_right", dead_zone_vel_right, dead_zone_vel_right);
+  n.param("fourth_robot_driver/control/dead_zone_vel_left", dead_zone_vel_left, dead_zone_vel_left);
   // iMCs01
   n.param("fourth_robot_driver/imcs01/port_name", port_name, port_name);
   n.param("fourth_robot_driver/imcs01/motor_pin_right", motor_pin_right, motor_pin_right);
@@ -156,15 +155,19 @@ int FourthRobotDriver::openSerialPort()
   if(ioctl(fd, URBTC_COUNTER_SET) < 0)
     throw logic_error("Faild to ioctl: URBTC_COUNTER_SET");
   //uin構造体cmd_ccmdの設定を書き込む
-  if(write(fd, &cmd_ccmd, sizeof(cmd_ccmd)) < 0)
+  if(write(fd, &cmd_ccmd, sizeof(cmd_ccmd)) < 0){
+	printLOG("Faild to write");
     throw logic_error("Faild to write");
+  }
 
-  if (ioctl(fd, URBTC_CONTINUOUS_READ) < 0)
+  if (ioctl(fd, URBTC_CONTINUOUS_READ) < 0){
+  	printLOG("ioctl: URBTC_CONTINUOUS_READ error");
     throw logic_error("ioctl: URBTC_CONTINUOUS_READ error\n");
-
+  }
+  
   //counterの初期化を行わない
   cmd_ccmd.setcounter = 0;
-
+  
   ROS_INFO("iMCs01 conneced to : %s", port_name.c_str());
 
   return 0;
@@ -362,16 +365,16 @@ int FourthRobotDriver::Drive(geometry_msgs::Twist cmd)
   bool brake = false;
 
   if(abs(cmd.linear.x) > abs(max_linear_vel))
-	cmd.linear.x = max_linear_vel;
+	cmd.linear.x = cmd.linear.x/abs(cmd.linear.x) * max_linear_vel;
   if(abs(cmd.angular.z) > abs(max_angular_vel))
-	cmd.angular.z = max_angular_vel;
+	cmd.angular.z = cmd.angular.z/abs(cmd.angular.z) * max_angular_vel;
   
   if(cmd.linear.x == 0 && cmd.angular.z == 0)
 	brake = true;
 	
-  target_vel_right = (2.0*cmd.linear.x + tread*cmd.angular.z)/2.0;
-  target_vel_left = (2.0*cmd.linear.x - tread*cmd.angular.z)/2.0;
-   
+  target_vel_right = cmd.linear.x + tread*cmd.angular.z;
+  target_vel_left = cmd.linear.x - tread*cmd.angular.z;
+  
   return driveDirect(target_vel_right, target_vel_left, brake);
 }
 
@@ -392,6 +395,22 @@ int FourthRobotDriver::driveDirect(double target_vel_right, double target_vel_le
   static int over_vel_cnt_left = 0;
   static int cnt = 0;
 
+  
+  // =============================================================
+  //                      I-P Control
+  // 指令値の急激な変化にある程度鈍感な制御手法．I(積分)の項がある
+  // ので，内部補償原理を満たす．
+  // =============================================================
+  // === Braking =========================================
+  // 入力速度が 0 の場合，現在速度の逆を入力にすることで
+  // I-Pでも即応性のあるブレーキングを試みている．
+  // また，速度 0 付近での振動を抑制するために不感帯を
+  // 設けている．
+  //======================================================
+  if(brake){
+	target_vel_right = -vel_right[0];
+	target_vel_left = -vel_left[0];
+  }
   // ------ update current data ------  
   // error vel
   error_vel_right[0] = target_vel_right - vel_right[0];
@@ -400,6 +419,25 @@ int FourthRobotDriver::driveDirect(double target_vel_right, double target_vel_le
   control_input_vel_right[0] = control_input_vel_right[1] + gain_p_right*(vel_right[0]-vel_right[1]) + (1.0/2.0)*gain_i_right*(error_vel_right[0]+error_vel_right[1]);
   control_input_vel_left[0] = control_input_vel_left[1] + gain_p_left*(vel_left[0]-vel_left[1]) + (1.0/2.0)*gain_i_left*(error_vel_left[0]+error_vel_left[1]);
   // ------ finish to update current data ------
+
+  // ------ finish to update last data ------
+  if(brake){
+	if(abs(vel_right[0]) < dead_zone_vel_right && abs(vel_left[0]) < dead_zone_vel_left){
+	  control_input_vel_right[0] = 0;
+	  control_input_vel_left[0] = 0;
+	  input_brake = input_brake | motor_pin_ch_right | motor_pin_ch_left;
+	}
+	else{
+	  if(abs(vel_right[0]) < 0.05){
+		control_input_vel_right[0] = 0;
+		input_brake = input_brake | motor_pin_ch_right;
+	  }
+	  if(abs(vel_left[0]) < 0.05){
+		control_input_vel_left[0] = 0;
+		input_brake = input_brake | motor_pin_ch_left;
+	  }
+	}
+  }
   
   // ------ update last data ------
   // error vel
@@ -408,48 +446,30 @@ int FourthRobotDriver::driveDirect(double target_vel_right, double target_vel_le
   // control vel
   control_input_vel_right[1] = control_input_vel_right[0];
   control_input_vel_left[1] = control_input_vel_left[0];
-  // ------ finish to update last data ------
-  
-  // ------ control reduce input using brake ------
-  // check velocity over
-  if(abs(vel_right[0]) > abs(target_vel_right)*limit_vel_rate_right)
-	over_vel_cnt_right++;
-  else
-	over_vel_cnt_right = 0;
-  if(abs(vel_left[0]) > abs(target_vel_left)*limit_vel_rate_left)
-	over_vel_cnt_left++;
-  else
-	over_vel_cnt_left = 0;
-  // if the velocity keep being over than threshold
-  if(over_vel_cnt_right > limit_vel_step_right){
-	input_brake = input_brake | motor_pin_ch_right;
-	over_vel_cnt_right = 0;
-	control_input_vel_right[1] = 0;
-  }
-  if(over_vel_cnt_left > limit_vel_step_left){
-	input_brake = input_brake | motor_pin_ch_left;
-	over_vel_cnt_left = 0;
-	control_input_vel_left[1] = 0;
-  }
-  // ------ finish to control reduce input ------
-
-  // control emergency brake  
-  if(brake){
-	input_brake = input_brake | motor_pin_ch_right | motor_pin_ch_left;
-	control_input_vel_right[1] = 0;
-	control_input_vel_left[1] = 0;
-  }
-  
+  // ==============================================================
+	  
   // ------ write input datas to iMCs01 ------
   // culculate input data
-  cmd_ccmd.offset[motor_pin_right] =  (int)(0x7fff - 0x7fff*(control_input_vel_right[0]/max_vel_right)); 
-  cmd_ccmd.offset[motor_pin_left] = (int)(0x7fff + 0x7fff*(control_input_vel_left[0]/max_vel_left));
+  double input_rate_right = control_input_vel_right[0]/max_vel_right;
+  double input_rate_left = control_input_vel_left[0]/max_vel_left;
+  // ------ over flow ------
+  if(abs(input_rate_right) > 1)
+	input_rate_right /= abs(input_rate_right);
+  if(abs(input_rate_left) > 1)
+	input_rate_left /= abs(input_rate_left);
+  // culculate input data
+  cmd_ccmd.offset[motor_pin_right] =  (int)(0x7fff - 0x7fff*input_rate_right); 
+  cmd_ccmd.offset[motor_pin_left] = (int)(0x7fff + 0x7fff*input_rate_left);
   cmd_ccmd.breaks = input_brake;
   // write
-  if(ioctl(fd, URBTC_COUNTER_SET) < 0)
+  if(ioctl(fd, URBTC_COUNTER_SET) < 0){
+	printLOG("Faild to ioctl: URBTC_COUNTER_SET");
 	throw logic_error("Faild to ioctl: URBTC_COUNTER_SET");
-  if(write(fd, &cmd_ccmd, sizeof(cmd_ccmd)) < 0)
+  }
+  if(write(fd, &cmd_ccmd, sizeof(cmd_ccmd)) < 0){
+	printLOG("Faild to write");
 	throw logic_error("Faild to write");
+  }
   // ------ finish to write input datas to iMCs01 ------
  
   return 0;

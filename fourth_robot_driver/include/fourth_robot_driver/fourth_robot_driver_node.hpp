@@ -34,21 +34,19 @@ private:
   double wheel_diameter_left;
   double max_linear_vel;
   double max_angular_vel;
-  double limit_vel_rate_right;
-  double limit_vel_rate_left;
-  double limit_vel_step_right;
-  double limit_vel_step_left;
   double gain_p_right;
   double gain_i_right;
   double gain_p_left;
   double gain_i_left;
+  double dead_zone_vel_right;
+  double dead_zone_vel_left;
+  
   int motor_pin_right;
   int motor_pin_left;
   int enc_pin_right;
   int enc_pin_left;
   int motor_pin_ch_right;
   int motor_pin_ch_left;
-  double rc_filter_rate;
   
   int fd;
   termios oldtio;
