@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>fourth_robot_launcher</name>
+  <name>fourth_robot_bringup</name>
   <version>0.0.0</version>
-  <description>The fourth_robot_launcher package</description>
+  <description>The fourth_robot_bring package</description>
 
   <maintainer email="groadpg@gmail.com">Ryodo Tanaka</maintainer>
   <license>BSD</license>
