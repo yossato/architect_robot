@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /LaserScan1
       Splitter Ratio: 0.5
     Tree Height: 750
   - Class: rviz/Selection
@@ -168,8 +169,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 5.20625
-        Min Value: -0.961454
+        Max Value: 15.7037
+        Min Value: -5.55603
         Value: true
       Axis: X
       Channel Name: intensity
@@ -188,7 +189,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.02
+      Size (m): 0.1
       Style: Spheres
       Topic: /base_scan
       Unreliable: false
@@ -219,7 +220,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.4163
+      Distance: 12.5106
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
@@ -231,10 +232,10 @@ Visualization Manager:
         Z: 0.442984
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.365398
+      Pitch: 0.615398
       Target Frame: base_footprint
       Value: Orbit (rviz)
-      Yaw: 2.4754
+      Yaw: 2.5754
     Saved: ~
 Window Geometry:
   Displays:
