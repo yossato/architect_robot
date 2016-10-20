@@ -5,4 +5,6 @@
   
   <include file="$(find fourth_robot_bringup)/launch/robot/driver.launch"/>
   <include file="$(find fourth_robot_bringup)/launch/joy/joy_control.launch"/>
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find fourth_robot_bringup)/config/rviz/2dmapping.rviz" required="true" />
 </launch>
