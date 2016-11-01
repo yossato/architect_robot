@@ -1,0 +1,33 @@
+<launch>
+  <master auto="start"/>
+
+  <!-- Run the map server -->
+  
+  <!-- 戸畑キャンパス  -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/front_control.yaml" />
+  <!-- ものつくり工房  -->
+  <!-- 教育研究4号棟2階  -->
+  <!-- 教育研究４号棟一階広場 -->
+  <!-- Tsukuba Challenge 2015  -->
+  <!-- Tsukuba Kenshu Center -->
+  <!--- Run URG filter-->
+  <!-- <include file="$(find third_robot_urg_filter)/launch/urg_laser_filter.launch" /> -->
+
+  <!--- Run AMCL -->
+  <include file="$(find fourth_robot_2dnav)/launch/amcl/amcl.launch" />
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find fourth_robot_2dnav)/params/costmap.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find fourth_robot_2dnav)/params/costmap.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find fourth_robot_2dnav)/params/local_costmap.yaml" command="load" />
+    <rosparam file="$(find fourth_robot_2dnav)/params/global_costmap.yaml" command="load" />
+    <rosparam file="$(find fourth_robot_2dnav)/params/base_local_planner.yaml" command="load" />
+    <!-- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" /> -->
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <param name="controller_frequency" value="5.0" />
+    <param name="controller_patience" value="15.0" />
+    <param name="max_planning_retries" value="10" />
+    <param name="oscillation_timeout" value="10.0" />
+    <param name="clearing_rotation_allowed" value="true" /> <!-- Our carlike robot is not able to rotate in place -->
+  </node>
+</launch>
