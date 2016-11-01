@@ -1,0 +1,12 @@
+<launch>
+  <node pkg="ira_laser_tools" name="laserscan_multi_merger" type="laserscan_multi_merger" output="screen">
+    <param name="destination_frame" value="lrf_link"/>
+    <param name="cloud_destination_topic" value="/lrf_cloud"/>
+    <param name="scan_destination_topic" value="/base_scan"/>
+    <param name="laserscan_topics" value ="/front/scan /rear/scan" /> 
+    <param name="angle_min" type="double" value="-3.14" />
+    <param name="angle_max" type="double" value="3.14" />
+    <param name="range_max" type="double" value="60.0" />
+    <param name="range_min" type="double" value="0.25" />
+  </node>
+</launch>
