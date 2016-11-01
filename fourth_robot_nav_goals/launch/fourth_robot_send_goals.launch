@@ -1,0 +1,13 @@
+<launch>
+  <node pkg="fourth_robot_nav_goals" 
+		type="fourth_robot_send_goals" 
+		name="fourth_robot_send_goals"
+		output="screen">
+    <param name="start_target_num" value="0" />
+
+	<rosparam param="pause_waypoints">[28]</rosparam>
+
+	<!-- Kyutech -->
+	<param name="waypointsfile" value="$(find fourth_robot_nav_goals)/waypoints/2016-11-01-09-12-36.csv" />
+  </node>
+</launch>
