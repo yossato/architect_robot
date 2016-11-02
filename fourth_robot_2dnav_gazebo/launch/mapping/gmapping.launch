@@ -1,4 +1,4 @@
-<launch>u
+<launch>
   <arg name="model" default="$(find fourth_robot_description)/robots/fourth_robot.urdf.xacro"/>
   <arg name="scan_topic" default="base_scan"/>
   <param name="/use_sim_time" value="true" />
@@ -10,8 +10,10 @@
 
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping">
 	<remap from="scan" to="base_scan"/>
-	<param name="base_frame" value="base_footprint"/>
   </node>
+
+  <node name="playbag" pkg="rosbag" type="play"
+		args="--clock $(arg bag_filename)" />
   
  <!--  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping"> -->
 <!--     <rosparam> -->
