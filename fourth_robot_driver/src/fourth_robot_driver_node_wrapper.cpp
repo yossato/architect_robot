@@ -368,8 +368,8 @@ int FourthRobotDriver::Drive(geometry_msgs::Twist cmd)
   if(cmd.linear.x == 0 && cmd.angular.z == 0)
 	brake = true;
 	
-  target_vel_right = cmd.linear.x + tread*cmd.angular.z;
-  target_vel_left = cmd.linear.x - tread*cmd.angular.z;
+  target_vel_right = cmd.linear.x + (tread/2.0)*cmd.angular.z;
+  target_vel_left = cmd.linear.x - (tread/2.0)*cmd.angular.z;
   
   return driveDirect(target_vel_right, target_vel_left, brake);
 }
