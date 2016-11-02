@@ -3,8 +3,8 @@
 
   <!-- Run the map server -->
   
-  <!-- 戸畑キャンパス  -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/map.yaml" />
+  <!-- gazebo sim  -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav_gazebo)/map/playpen_map.yaml" />
   <!-- ものつくり工房  -->
   <!-- 教育研究4号棟2階  -->
   <!-- 教育研究４号棟一階広場 -->
@@ -13,6 +13,10 @@
   <!--- Run URG filter-->
   <!-- <include file="$(find third_robot_urg_filter)/launch/urg_laser_filter.launch" /> -->
 
+  <node pkg="topic_tools" type="relay" name="relay_cmd_vel" args="/cmd_vel /diff_drive_controller/cmd_vel"/>
+  <node pkg="topic_tools" type="relay" name="relay_odom" args="/diff_drive_controller/odom odom"/>
+
+  
   <!--- Run AMCL -->
   <include file="$(find fourth_robot_2dnav)/launch/amcl/amcl.launch" />
 
