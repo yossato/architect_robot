@@ -28,6 +28,6 @@
     <param name="controller_patience" value="15.0" />
     <param name="max_planning_retries" value="10" />
     <param name="oscillation_timeout" value="10.0" />
-    <param name="clearing_rotation_allowed" value="false" /> <!-- Our carlike robot is not able to rotate in place -->
+    <param name="clearing_rotation_allowed" value="true" /> <!-- Our carlike robot is not able to rotate in place -->
   </node>
 </launch>

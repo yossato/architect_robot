@@ -1,14 +1,14 @@
 TrajectoryPlannerROS:
   max_vel_x: 0.825
-  min_vel_x: -0.825
-  max_rotational_vel: 2.08
-  min_in_place_rotational_vel: 0.5
+  min_vel_x: -0.5
+  max_rotational_vel: 0.2
+  min_in_place_rotational_vel: 1.04
 
-  acc_lim_th: 0.825
-  acc_lim_x: 0.825
+  acc_lim_th: 4.0
+  acc_lim_x: 2.0
   acc_lim_y: 0.0
 
-  holonomic_robot: false
+  holonomic_robot: true
   dwa: true
   oscillation_reset_dist: 0.5
   escape_vel: -0.5
@@ -58,7 +58,7 @@ recovery_behaviors:
 
 TebLocalPlannerROS:
 
- odom_topic: /fourth_robot/diff_drive_controller/odom
+ odom_topic: /odom
  map_frame: /map
  # Trajectory
   
@@ -74,9 +74,9 @@ TebLocalPlannerROS:
  max_vel_x: 0.825
  max_vel_x_backwards: 0.825
  max_vel_y: 0.0
- max_vel_theta: 2.08 # the angular velocity is also bounded by min_turning_radius in case of a carlike robot (r = v / omega)
+ max_vel_theta: 0.2 # the angular velocity is also bounded by min_turning_radius in case of a carlike robot (r = v / omega)
  acc_lim_x: 0.825
- acc_lim_theta: 0.5
+ acc_lim_theta: 4.0
 
  # ********************** Carlike robot parameters ********************
  # min_turning_radius: 1.95        # Min turning radius of the carlike robot (compute value using a model or adjust with rqt_reconfigure manually)
@@ -149,32 +149,32 @@ TebLocalPlannerROS:
 
 DWAPlannerROS:
   # Robot configuration parameters  
-  acc_lim_x: 0.825
+  acc_lim_x: 2.0
   acc_lim_y: 0
-  acc_lim_th: 0.5
+  acc_lim_th: 4.0
 
   max_vel_x: 0.825
-  min_vel_x: -0.825
+  min_vel_x: 0.2
   max_vel_y: 0
   min_vel_y: 0
 
   max_trans_vel: 0.825
-  min_trans_vel: -0.825
-  max_rot_vel: 2.08
-  min_rot_vel: -2.08
+  min_trans_vel: 0.2
+  max_rot_vel: 0.4
+  min_rot_vel: -0.4
 
   # Goal Tolerance Parameters
   yaw_goal_tolerance: 0.1
-  xy_goal_tolerance: 0.2
+  xy_goal_tolerance: 0.5
   latch_xy_goal_tolerance: false
 
   # # Forward Simulation Parameters
-  # sim_time: 2.0
-  # sim_granularity: 0.02
-  # vx_samples: 6
-  # vy_samples: 0
-  # vtheta_samples: 20
-  # penalize_negative_x: true
+  sim_time: 2.0
+  sim_granularity: 0.02
+  vx_samples: 10
+  vy_samples: 0
+  vtheta_samples: 30
+  penalize_negative_x: true
 
   # # Trajectory scoring parameters
   # path_distance_bias: 32.0 # The weighting for how much the controller should stay close to the path it was given
