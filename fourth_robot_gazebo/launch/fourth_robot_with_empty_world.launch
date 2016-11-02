@@ -17,6 +17,8 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
+  <!-- lrf merger -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
 
   <!-- Load the URDF into the ROS Parameter Server -->
   <param name="robot_description"
