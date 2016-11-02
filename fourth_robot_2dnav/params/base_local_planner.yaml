@@ -23,7 +23,7 @@ TrajectoryPlannerROS:
 
   publish_cost_grid_pc: false
 
-recovery_behaviour_enabled: true
+  recovery_behavior_enabled: true
 
 recovery_behaviors:
   - {name: conservative_reset, type: clear_costmap_recovery/ClearCostmapRecovery}
