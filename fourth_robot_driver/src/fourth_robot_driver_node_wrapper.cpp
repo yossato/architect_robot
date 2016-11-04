@@ -22,7 +22,6 @@
 using namespace std;
 
 FourthRobotDriver::FourthRobotDriver(ros::NodeHandle &n):
-  max_enc_cnt(65535.0),
   geer_rate(2.0),
   delta_time(0),
   delta_dist_right(0),
@@ -246,17 +245,17 @@ int FourthRobotDriver::getEncoderCounts()
   // ------ check the overflow ------
   // about diff time
   if(time[2] < 0)
-    time[2] = max_enc_cnt + time[3];     
+	  time[2] += 65536;     
   // about diff enc_cnt_right
-  if(enc_cnt_right[2] > max_enc_cnt/10)
-	enc_cnt_right[2] = enc_cnt_right[2] - max_enc_cnt;
-  else if(enc_cnt_right[2] < -max_enc_cnt/10)
-	enc_cnt_right[2] = enc_cnt_right[2] + max_enc_cnt;
+  if(enc_cnt_right[2] > 6553)
+	enc_cnt_right[2] = enc_cnt_right[2] - 65536;
+  else if(enc_cnt_right[2] < -6553)
+	enc_cnt_right[2] = enc_cnt_right[2] + 65536;
   // about diff enc_cnt_left
-  if(enc_cnt_left[2] > max_enc_cnt/10)
-	enc_cnt_left[2] = enc_cnt_left[2] - max_enc_cnt;
-  else if(enc_cnt_left[2] < -max_enc_cnt/10)
-	enc_cnt_left[2] = enc_cnt_left[2] + max_enc_cnt;
+  if(enc_cnt_left[2] > 6553)
+	enc_cnt_left[2] = enc_cnt_left[2] - 65536;
+  else if(enc_cnt_left[2] < -6553)
+	enc_cnt_left[2] = enc_cnt_left[2] + 65536;
   // ------ finish to check the over flow ------
   // ------ finish to update current datas ------
 
@@ -456,6 +455,7 @@ int FourthRobotDriver::driveDirect(double target_vel_right, double target_vel_le
   // culculate input data
   cmd_ccmd.offset[motor_pin_right] =  (int)(0x7fff - 0x7fff*input_rate_right); 
   cmd_ccmd.offset[motor_pin_left] = (int)(0x7fff + 0x7fff*input_rate_left);
+  //cout << cmd_ccmd.offset[motor_pin_right] << ", " << cmd_ccmd.offset[motor_pin_left] << endl;
   cmd_ccmd.breaks = input_brake;
   // write
   if(ioctl(fd, URBTC_COUNTER_SET) < 0){
