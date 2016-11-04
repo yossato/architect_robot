@@ -2,7 +2,10 @@
   <master auto="start"/>
   <!-- MAP SERVER -->
   <!-- 戸畑キャンパス  -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/front_control.yaml" />
+  <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/front_control.yaml" /> -->
+
+  <!-- 大清水公園 -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/tsukuba01/ooshimizu01.yaml" />
   
   <!--- Run AMCL -->
   <include file="$(find fourth_robot_2dnav)/launch/amcl/amcl.launch" />
