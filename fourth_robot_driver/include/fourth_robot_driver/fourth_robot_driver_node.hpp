@@ -56,7 +56,6 @@ private:
   int motor_pin_offset;
   int enc_pin_offset;
 
-  double max_enc_cnt;
   double geer_rate;
   double delta_time;
   double delta_dist_right;
