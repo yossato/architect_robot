@@ -6,7 +6,9 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Path1
         - /Path2
+        - /Path3
       Splitter Ratio: 0.5
     Tree Height: 722
   - Class: rviz/Selection
@@ -172,8 +174,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 22.2986
-        Min Value: -0.329502
+        Max Value: 17.1226
+        Min Value: -5.83607
         Value: true
       Axis: X
       Channel Name: intensity
@@ -247,7 +249,7 @@ Visualization Manager:
       Head Length: 0.2
       Length: 0.3
       Line Style: Billboards
-      Line Width: 1
+      Line Width: 0.5
       Name: Path
       Offset:
         X: 0
@@ -269,7 +271,7 @@ Visualization Manager:
       Head Length: 0.2
       Length: 0.3
       Line Style: Billboards
-      Line Width: 1
+      Line Width: 0.5
       Name: Path
       Offset:
         X: 0
@@ -307,6 +309,28 @@ Visualization Manager:
       Topic: /particlecloud
       Unreliable: false
       Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 255; 85; 255
+      Enabled: true
+      Head Diameter: 0.3
+      Head Length: 0.2
+      Length: 0.3
+      Line Style: Billboards
+      Line Width: 0.5
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Style: None
+      Radius: 0.03
+      Shaft Diameter: 0.1
+      Shaft Length: 0.1
+      Topic: /move_base/NavfnROS/plan
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -331,22 +355,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 19.7382
+      Distance: 19.454
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.95774
-        Y: -0.405065
-        Z: -3.8147e-06
+        X: -1.28831
+        Y: 0.137158
+        Z: -5.72205e-06
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.769797
+      Pitch: 0.634797
       Target Frame: base_footprint
       Value: XYOrbit (rviz)
-      Yaw: 2.9304
+      Yaw: 3.0854
     Saved: ~
 Window Geometry:
   Displays:
@@ -364,5 +388,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 936
-  X: 953
+  X: 913
   Y: 14
