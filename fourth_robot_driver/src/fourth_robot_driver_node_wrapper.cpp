@@ -265,6 +265,8 @@ int FourthRobotDriver::getEncoderCounts()
   delta_dist_left = -(enc_cnt_left[2]/4000.0/geer_rate)*(wheel_diameter_left*M_PI);
   // get delta time (change from [ms] to [s] on diff time)
   delta_time = time[2]/1000.0;
+  if(delta_time <=0)
+    delta_time = 1./ros_rate;
 
   // calcurate rotation
   sum_rad_right += enc_cnt_right[2]/4000.0*M_PI;
