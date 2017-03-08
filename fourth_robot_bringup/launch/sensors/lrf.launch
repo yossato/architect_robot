@@ -9,7 +9,9 @@
   </node>
 
   <node pkg="urg_node" type="urg_node" name="urg_node" ns="rear" output="screen">
-	<param name="ip_address" type="string" value="192.168.10.30"/>
+	<!-- <param name="ip_address" type="string" value="192.168.10.30"/> -->
+    <param name="serial_port" type="string" value="/dev/ttyACM0"/>
+    <param name="serial_baud" type="string" value="115200"/>
 	<param name="frame_id" type="string" value="rear_lrf_link"/>
 	<param name="publish_intensity" type="bool" value="true"/>
 	<param name="publish_multiecho" type="bool" value="false"/>

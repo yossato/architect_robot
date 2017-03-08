@@ -5,8 +5,9 @@
   <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/front_control.yaml" /> -->
 
   <!-- 大清水公園 -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/tsukuba01/ooshimizu01.yaml" />
-  
+  <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/tsukuba01/ooshimizu01.yaml" /> -->
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/nakamura_memorial.yaml" />
   <!--- Run AMCL -->
   <include file="$(find fourth_robot_2dnav)/launch/amcl/amcl.launch" />
 
@@ -32,4 +33,5 @@
     <param name="oscillation_timeout" value="10.0" />
     <param name="clearing_rotation_allowed" value="true" />
   </node>
+  <param name="NavfnROS/allow_unknown" value="false"/>
 </launch>
