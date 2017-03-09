@@ -7,7 +7,15 @@
   <!-- 大清水公園 -->
   <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/tsukuba01/ooshimizu01.yaml" /> -->
 
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/nakamura_memorial.yaml" />
+  <!-- 中村記念館 -->
+  <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/nakamura_memorial.yaml" /> -->
+
+  <!-- もの作り工房 -->
+  <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/monotsukuri-17.yaml" /> -->
+
+  <!-- 取材用デモ -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/interview.yaml" />
+  
   <!--- Run AMCL -->
   <include file="$(find fourth_robot_2dnav)/launch/amcl/amcl.launch" />
 
@@ -19,10 +27,11 @@
     <rosparam file="$(find fourth_robot_2dnav)/params/costmap/local_costmap.yaml" command="load" />
     <rosparam file="$(find fourth_robot_2dnav)/params/costmap/global_costmap.yaml" command="load" />
 	<!-- BASE GLOBAL PLANNER -->
-	<param name="base_global_planner" value="navfn/NavfnROS" />
+	<!-- <param name="base_global_planner" value="navfn/NavfnROS" /> -->
+    <param name="base_global_planner" value="carrot_planner/CarrotPlanner" />
 	<rosparam file="$(find fourth_robot_2dnav)/params/planner/base_global_planner.yaml" command="load" />
 	<!-- BASE LOCAL PLANNER -->
-	<param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+	<param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>
 	<rosparam file="$(find fourth_robot_2dnav)/params/planner/local/dwa_planner.yaml" command="load" />
 	<!-- RECOVERY -->
 	<rosparam file="$(find fourth_robot_2dnav)/params/planner/recovery_behaviors.yaml" command="load"/>

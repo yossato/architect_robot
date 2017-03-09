@@ -9,10 +9,37 @@
     <param name="serial_port" value="/dev/ttyACM0" />
     <param name="serial_baud" value="115200" />
     <param name="publish_intensity" value="true" />
-    <param name="degree_minimum" value="-90" />
-    <param name="degree_maximum" value="90" />
+    <param name="degree_minimum" value="-87.5" />
+    <param name="degree_maximum" value="87.5" />
     <param name="skip" value="0" />
-    <param name="range_minimum" value="1.0" />
+    <param name="range_minimum" value="0.01" />
     <param name="range_maximum" value="30" />
   </node>
+
+  <!-- <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan"> -->
+
+  <!--   <remap from="cloud_in" to="/point_cloud2"/> -->
+  <!--   <remap from="scan" to="/gim30/scan"/> -->
+  <!--   <rosparam> -->
+  <!--     target_frame: lrf_link -->
+  <!--     transform_tolerance: 0.01 -->
+  <!--     min_height: 0.1 -->
+  <!--     max_height: 0.7 -->
+
+  <!--     angle_min: -1.5708 # -M_PI/2 -->
+  <!--     angle_max: 1.5708 # M_PI/2 -->
+  <!--     angle_increment: 0.004363 # 0.25[deg] -->
+  <!--     scan_time: 0.025 # 40[Hz] -->
+  <!--     range_min: 0.01 -->
+  <!--     range_max: 30.0 -->
+  <!--     use_inf: true -->
+
+  <!--     # Concurrency level, affects number of pointclouds queued for processing and number of threads used -->
+  <!--     # 0 : Detect number of cores -->
+  <!--     # 1 : Single threaded -->
+  <!--     # 2->inf : Parallelism level -->
+  <!--     concurrency_level: 1 -->
+  <!--   </rosparam> -->
+  <!-- </node> -->
+  
 </launch>
