@@ -10,12 +10,12 @@
   <param name="transform_tolerance" value="0.2" />
   <param name="gui_publish_rate" value="10.0"/>
   <param name="laser_max_beams" value="60"/>
-  <param name="min_particles" value="100"/>
+  <param name="min_particles" value="200"/>
   <param name="max_particles" value="5000"/>
   <param name="kld_err" value="0.01"/>
   <param name="kld_z" value="0.99"/>
   <param name="odom_alpha1" value="0.1"/>
-  <param name="odom_alpha2" value="0.1"/>
+  <param name="odom_alpha2" value="0.2"/>
   <!-- translation std dev, m -->
   <param name="odom_alpha3" value="0.1"/>
   <param name="odom_alpha4" value="0.2"/>
@@ -39,12 +39,13 @@
   <param name="initial_pose_x" value="-43.830" />
   <param name="initial_pose_y" value="-57.310" />
   <param name="initial_pose_a" value="1.059" />
+  
   <!-- <param name="initial_pose_x" value="-2.964" /> -->
   <!-- <param name="initial_pose_y" value="57.112" /> -->
   <!-- <param name="initial_pose_a" value="1.507" /> -->
-  <param name="initial_pose_x" value="-4.771" />
-  <param name="initial_pose_y" value="5.712" />
-  <param name="initial_pose_a" value="-0.505" />
+  <!-- <param name="initial_pose_x" value="-4.771" /> -->
+  <!-- <param name="initial_pose_y" value="5.712" /> -->
+  <!-- <param name="initial_pose_a" value="-0.505" /> -->
 
 </node>
 </launch>
