@@ -29,7 +29,6 @@ FourthRobotDriver::FourthRobotDriver(ros::NodeHandle &n):
   fd(-1),
   port_name("/dev/urbtc0"),
   ros_rate(100),
-  wheel_base(0.94),
   tread(0.44515),
   wheel_diameter_right(0.38725),
   wheel_diameter_left(0.38695),
@@ -53,7 +52,6 @@ FourthRobotDriver::FourthRobotDriver(ros::NodeHandle &n):
   // ------ Get Params ------
   // robot property
   n.param("fourth_robot_driver/property/ros_rate", ros_rate, ros_rate);
-  n.param("fourth_robot_driver/property/wheel_base", wheel_base, wheel_base);
   n.param("fourth_robot_driver/property/tread", tread, tread);
   n.param("fourth_robot_driver/property/wheel_diameter_right", wheel_diameter_right, wheel_diameter_right);
   n.param("fourth_robot_driver/property/wheel_diameter_left", wheel_diameter_left, wheel_diameter_left);
@@ -435,6 +433,15 @@ int FourthRobotDriver::driveDirect(double target_vel_right, double target_vel_le
 	  }
 	}
   }
+
+  if( (fabs(vel_right[0]-control_input_vel_right[0]) > 0.3) && fabs(vel_right[0]) < 0.25){
+    ROS_WARN("Emergency Button Pushed...Right");
+    control_input_vel_right[0] = 0;
+  }
+  if( (fabs(vel_left[0]-control_input_vel_left[0]) > 0.3) && fabs(vel_left[0]) < 0.25){
+    ROS_WARN("Emergency Button Pushed...Left");
+    control_input_vel_left[0] = 0;
+  }  
   
   // ------ update last data ------
   // error vel
