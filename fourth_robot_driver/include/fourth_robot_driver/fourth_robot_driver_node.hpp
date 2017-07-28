@@ -28,7 +28,6 @@ public:
 private:
   double ros_rate;
   string port_name;
-  double wheel_base;
   double tread;
   double wheel_diameter_right;
   double wheel_diameter_left;

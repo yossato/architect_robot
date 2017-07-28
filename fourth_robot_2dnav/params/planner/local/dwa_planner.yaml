@@ -4,12 +4,12 @@ DWAPlannerROS:
   acc_lim_y: 0
   acc_lim_th: 4.0
 
-  max_vel_x: 1.1
+  max_vel_x: 0.825
   min_vel_x: -0.25
   max_vel_y: 0
   min_vel_y: 0
 
-  max_trans_vel: 1.1
+  max_trans_vel: 0.825
   min_trans_vel: -0.25
   max_rot_vel: 1.0
   min_rot_vel: -1.0

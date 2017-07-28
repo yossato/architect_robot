@@ -14,7 +14,10 @@
   <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/monotsukuri-17.yaml" /> -->
 
   <!-- 取材用デモ -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/interview.yaml" />
+  <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/interview.yaml" /> -->
+
+  <!-- 駅伝大会 -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/ekiden_final/map1234.yaml" />
   
   <!--- Run AMCL -->
   <include file="$(find fourth_robot_2dnav)/launch/amcl/amcl.launch" />
