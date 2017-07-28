@@ -1,4 +1,0 @@
-NavfnROS:
-  allow_unknown: false
-  # Robot configuration parameters  
-  default_tolerance: 1.0
