@@ -22,7 +22,7 @@
 
 //#include <linux/config.h>
 //#include <linux/autoconf.h>			//chg t.miyo
-#include "/usr/src/linux-headers-3.13.0-105-generic/include/generated/autoconf.h"
+#include "/usr/src/linux-headers-3.13.0-125-generic/include/generated/autoconf.h"
 #include <linux/kernel.h>
 #include <linux/errno.h>
 #include <linux/init.h>
@@ -30,7 +30,7 @@
 #include <linux/module.h>
 #include <linux/kref.h>
 #include <asm/uaccess.h>
-#include "/usr/src/linux-headers-3.13.0-105-generic/include/linux/usb.h"
+#include "/usr/src/linux-headers-3.13.0-125-generic/include/linux/usb.h"
 //#include <linux/usb.h>
 
 #include "urbtc.h"
