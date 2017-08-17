@@ -1,0 +1,43 @@
+# Image width 
+# (integer, default: 640)
+image_width: 848
+
+# Image height 
+# (integer, default: 480)
+image_height: 480
+
+# Possible values are mjpeg, yuyv, uyvy 
+# (string, default: "mjpeg")
+pixel_format: "mjpeg"
+
+# Possible values are mmap, read, userptr 
+# (string, default: "mmap")
+io_method: "userptr"
+
+# The required framerate 
+# (integer, default: 30)
+framerate: 30
+
+# Contrast of video image (0-255) 
+# (integer, default: 32)
+contrast: 128
+
+# Brightness of video image (0-255) 
+# (integer, default: 32)
+brightness: 128
+
+# Saturation of video image (0-255)
+# (integer, default: 32)
+saturation: 192
+
+# Sharpness of video image (0-255) 
+# (integer, default: 22)
+sharpness: 192
+
+# Enable camera's autofocus 
+# (boolean, default: false)
+autofocus: false
+
+# If autofocus is disabled, the focus of the camera (0=at infinity) 
+# (integer, default: 51)
+focus: 10
