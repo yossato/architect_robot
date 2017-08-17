@@ -16,7 +16,7 @@
 	<!-- BASE GLOBAL PLANNER -->
 	<rosparam file="$(find fourth_robot_2dnav)/params/planner/global/carrot_planner.yaml" command="load" />
 	<!-- BASE LOCAL PLANNER -->
-	<rosparam file="$(find fourth_robot_2dnav)/params/planner/local/eband_local_planner.yaml" command="load" />
+	<rosparam file="$(find fourth_robot_2dnav)/params/planner/local/dwa_planner.yaml" command="load" />
 	<!-- RECOVERY -->
 	<rosparam file="$(find fourth_robot_2dnav)/params/planner/recovery_behaviors.yaml" command="load"/>
 	<!-- MOVE BASE -->
