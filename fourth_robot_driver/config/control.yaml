@@ -1,9 +1,9 @@
-max_linear_vel       : 2.0
+max_linear_vel       : 1.1
 max_angular_vel      : 3.14
-gain_p_right         : 0.026
-gain_i_right         : 0.0060
-gain_p_left          : 0.025
-gain_i_left          : 0.0060
+gain_p_right         : 0.104
+gain_i_right         : 0.0085
+gain_p_left          : 0.1
+gain_i_left          : 0.0085
 dead_zone_vel_right  : 0.05
 dead_zone_vel_left   : 0.05
 
