@@ -1,10 +1,10 @@
 <launch>
   <master auto="start"/>
   
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/opencampus2017/map.yaml" />
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/tsukuba2017/tc2017_1028.yaml" />
   
   <!--- Run AMCL -->
-  <include file="$(find fourth_robot_2dnav)/launch/amcl/amcl.launch" />
+  <include file="$(find fourth_robot_2dnav)/launch/amcl/amcl_tc2017.launch" />
 
   <!-- MOVE BASE -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
