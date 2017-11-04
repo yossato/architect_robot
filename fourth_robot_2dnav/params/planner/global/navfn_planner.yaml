@@ -1,7 +1,7 @@
 base_global_planner: navfn/NavfnROS
 NavfnROS:
   allow_unknown: false
-  planner_window_x: 0.25
-  planner_window_x: 0.1
+  planner_window_x: 1.5
+  planner_window_y: 1.5
   default_tolerance: 1.0
   visualize_potential: false
