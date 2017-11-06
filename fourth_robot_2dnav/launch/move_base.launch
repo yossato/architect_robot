@@ -1,7 +1,7 @@
 <launch>
   <master auto="start"/>
   
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/tsukuba_kenshu_center/map.yaml" />
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find fourth_robot_2dnav)/map/tsukuba2017/tc2017_1028.yaml" />
   
   <!--- Run AMCL -->
   <include file="$(find fourth_robot_2dnav)/launch/amcl/amcl_tc2017.launch" />
