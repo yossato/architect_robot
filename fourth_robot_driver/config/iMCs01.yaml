@@ -1,4 +1,4 @@
-port_name            : "/dev/urbtc1"
+port_name            : "/dev/urbtc0"
 motor_pin_right      : 103
 motor_pin_left       : 102
 enc_pin_right        : 106
