@@ -1,5 +1,4 @@
 <launch>
-
   <arg name="waypoint_filename" default="$(find fourth_robot_bringup)/waypoints/tsukuba2017/tc2017_without_pede.csv" />
   <arg name="start_waypoint" default="0"/>
 
