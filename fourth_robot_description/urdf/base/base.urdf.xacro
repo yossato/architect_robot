@@ -12,21 +12,24 @@
 
 	<link name="base_link">
 	  <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
 		<geometry>
-		  <mesh filename="package://fourth_robot_description/meshes/DAE/base/base_link.dae"/>
+                  <!--<mesh filename="package://fourth_robot_description/meshes/DAE/base/base_link.dae"/>-->
+                  <mesh filename="package://fourth_robot_description/meshes/STL/base/Architect_assem_appearance.stl"/>
 		</geometry>
 	  </visual>
 	  <collision>
 		<geometry>
-		  <mesh filename="package://fourth_robot_description/meshes/STL/base/base_link.stl"/>
+                  <!--<mesh filename="package://fourth_robot_description/meshes/STL/base/base_link.stl"/>-->
+                  <mesh filename="package://fourth_robot_description/meshes/STL/base/Architect_assem_collision.stl"/>
 		</geometry>
 	  </collision>
 	  <inertial>
-		<origin xyz="-0.061 0 -0.002"/>
-		<mass value="45"/>
-		<inertia ixx="1.64890" ixy="0" ixz="-0.21424"
-				 iyy="2.24766" iyz="0"
-				 izz="1.25664" />
+                <origin xyz="0 0 0"/>
+                <mass value="2.4"/>
+                <inertia ixx="0.0008255" ixy="0" ixz="0.00001601"
+                                 iyy="0.0007067" iyz="-0.0000000009905"
+                                 izz="0.0004498" />
 	  </inertial>
 	</link>
   </xacro:macro>

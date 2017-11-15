@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <launch>
   <!-- arguments -->
   <arg name="model" default="$(find fourth_robot_description)/robots/fourth_robot.urdf.xacro"/>

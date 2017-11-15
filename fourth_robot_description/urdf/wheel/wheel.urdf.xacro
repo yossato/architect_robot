@@ -5,9 +5,9 @@
   <xacro:include filename="$(find fourth_robot_description)/urdf/wheel/wheel.transmission.xacro"/>
   <xacro:include filename="$(find fourth_robot_description)/urdf/wheel/wheel.gazebo.xacro"/>
 
-  <property name="wheel_radius" value="0.20316"/>
-  <property name="wheel_length" value="0.032"/>
-  <property name="wheel_mass" value="2.0"/>
+  <property name="wheel_radius" value="0.0135"/>
+  <property name="wheel_length" value="0.011"/>
+  <property name="wheel_mass" value="0.066"/>
   
   <xacro:macro name="wheel_v0" params="prefix parent *joint_origin *joint_axis">
 	<joint name="${prefix}_wheel_joint" type="continuous">
@@ -18,13 +18,15 @@
 	</joint>
 
 	<link name="${prefix}_wheel_link">
-	  <visual>
+          <visual>
+          <origin xyz="0 0 0" rpy="${-M_PI/2} 0 0"/>
 		<geometry>
-		  <mesh filename="package://fourth_robot_description/meshes/DAE/wheel/wheel_link.dae"/>
+                  <!--<mesh filename="package://fourth_robot_description/meshes/DAE/wheel/wheel_link.dae"/>-->
+                  <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
 		</geometry>
 	  </visual>
 	  <collision>
-		<origin xyz="0 -0.003 0" rpy="${-M_PI/2} 0 0"/>
+                <origin xyz="0 0 0" rpy="${-M_PI/2} 0 0"/>
 		<geometry>
 		  <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
 		</geometry>
