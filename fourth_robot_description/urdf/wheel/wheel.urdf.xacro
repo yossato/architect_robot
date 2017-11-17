@@ -7,7 +7,7 @@
 
   <xacro:property name="wheel_radius" value="0.0135"/>
   <xacro:property name="wheel_length" value="0.011"/>
-  <xacro:property name="wheel_mass" value="0.066"/>
+  <xacro:property name="wheel_mass" value="0.66"/>
   
   <xacro:macro name="wheel_v0" params="prefix parent *joint_origin *joint_axis">
 	<joint name="${prefix}_wheel_joint" type="continuous">
