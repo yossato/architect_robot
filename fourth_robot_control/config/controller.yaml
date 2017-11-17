@@ -43,5 +43,5 @@
         max_velocity           : 3.14  # rad/s
         min_velocity           : -3.14
         has_acceleration_limits: true
-        max_acceleration       : 1.0  # rad/s^2
-        min_acceleration       : -1.0
+        max_acceleration       : 300.0  # rad/s^2
+        min_acceleration       : -300.0

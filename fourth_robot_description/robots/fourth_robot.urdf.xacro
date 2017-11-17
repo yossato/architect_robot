@@ -3,9 +3,9 @@
 
   <xacro:include filename="$(find fourth_robot_description)/urdf/base/base.urdf.xacro"/>
   <xacro:include filename="$(find fourth_robot_description)/urdf/wheel/wheel.urdf.xacro"/>
-  <xacro:include filename="$(find fourth_robot_description)/urdf/sensors/gps/gps.urdf.xacro"/>
+<!--  <xacro:include filename="$(find fourth_robot_description)/urdf/sensors/gps/gps.urdf.xacro"/>
   <xacro:include filename="$(find fourth_robot_description)/urdf/sensors/gim30/gim30.urdf.xacro"/>
-  <xacro:include filename="$(find fourth_robot_description)/urdf/sensors/lrf/lrf.urdf.xacro"/>
+  <xacro:include filename="$(find fourth_robot_description)/urdf/sensors/lrf/lrf.urdf.xacro"/>-->
   <xacro:include filename="$(find fourth_robot_description)/urdf/sensors/stereo_camera/stereo_camera.urdf.xacro"/>
   <!-- =============== Link & Joint =============== -->
   <!-- Base -->
