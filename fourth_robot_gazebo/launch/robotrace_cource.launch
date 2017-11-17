@@ -46,6 +46,8 @@
     <param name="scale_angular" value="4.0" />
   </node>
 
+  <node pkg="rqt_image_view" name="rqt_image_view" type="rqt_image_view"/>
+
   <!-- ros_control motoman launch file -->
   <include file="$(find fourth_robot_control)/launch/fourth_robot_control.launch"/>
 </launch>
