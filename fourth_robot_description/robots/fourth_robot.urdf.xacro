@@ -63,7 +63,7 @@
 
   <!--stereo camera-->
   <xacro:stereo_camera prefix="upper" parent="base_link">
-    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+    <origin xyz="0 0 0.16" rpy="0 0.31 0"/>
   </xacro:stereo_camera>
 
   <link name="imu_link"/>
