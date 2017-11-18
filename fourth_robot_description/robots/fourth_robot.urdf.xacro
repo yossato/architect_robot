@@ -3,6 +3,7 @@
 
   <xacro:include filename="$(find fourth_robot_description)/urdf/base/base.urdf.xacro"/>
   <xacro:include filename="$(find fourth_robot_description)/urdf/wheel/wheel.urdf.xacro"/>
+  <xacro:include filename="$(find fourth_robot_description)/urdf/wheel/follow_wheel.urdf.xacro"/>
 <!--  <xacro:include filename="$(find fourth_robot_description)/urdf/sensors/gps/gps.urdf.xacro"/>
   <xacro:include filename="$(find fourth_robot_description)/urdf/sensors/gim30/gim30.urdf.xacro"/>
   <xacro:include filename="$(find fourth_robot_description)/urdf/sensors/lrf/lrf.urdf.xacro"/>-->
@@ -25,6 +26,12 @@
         <origin xyz="-0.014 0.0695 0.0115" rpy="0 0 ${M_PI}"/>
         <axis xyz="0 -1 0"/>
   </xacro:wheel_v0>
+
+  <!-- Front Wheel -->
+  <xacro:follow_wheel_v0 prefix="front" parent="base_link">
+        <origin xyz="0.05 0 0.0115" rpy="0 0 ${M_PI}"/>
+        <axis xyz="0 -1 0"/>
+  </xacro:follow_wheel_v0>
 
   <!-- Sensors -->
   <!-- GPS -->
@@ -83,6 +90,8 @@
   <!-- Wheel -->
   <xacro:wheel_gazebo_v0 prefix="right"/>
   <xacro:wheel_gazebo_v0 prefix="left"/>
+  <xacro:follow_wheel_gazebo_v0 prefix="front"/>
+
   <!-- <xacro:wheel_gazebo_control_v0 rate="25"/> -->
 
   <!-- LRF -->

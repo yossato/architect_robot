@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <xacro:macro name="follow_wheel_gazebo_v0" params="prefix">
+	<gazebo reference="${prefix}_follow_wheel_link">
+	  <selfCollide>false</selfCollide>
+      <mu1 value="0" />
+      <mu2 value="0" />
+    </gazebo>
+  </xacro:macro>
+</robot>
