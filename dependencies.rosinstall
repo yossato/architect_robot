@@ -1,10 +1,10 @@
 - git:
     local-name: architect_tools/gim30
-    uri: https://github.com/RyodoTanaka/gim30.git
+    uri: https://github.com/Yoshiaki Sato/gim30.git
     version: master
 - git:
     local-name: architect_tools/joy_twist
-    uri: https://github.com/RyodoTanaka/joy_twist.git
+    uri: https://github.com/Yoshiaki Sato/joy_twist.git
     version: master
 - git:
     local-name: architect_tools/rt_usb_9axisimu_driver
