@@ -1,7 +1,0 @@
-linear_x_vel_turbo: 1.1#1.6  # Trubo velocity on Linear X
-linear_x_vel_nomal: 0.75  # nomal velocity on Linear X
-linear_y_vel_turbo: 0  # Trubo velocity on Linear Y
-linear_y_vel_nomal: 0  # nomal velocity on Linear Y
-linear_z_vel_turbo: 2.0 # Trubo velocity on Angular Z (PI)
-linear_z_vel_nomal: 2.0 # nomal velocity on Angular Z (PI/3)
-holonomic: false         # enable holonomic robot or not
