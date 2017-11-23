@@ -10,9 +10,6 @@
 # ROSのインストール    
 # 関連ライブラリのインストール  
 ## PS3コントローラを使用する場合
-
-# シミュレータの起動    
-## PS3 コントローラを使用する場合    
 PS3 コントローラを使用しない場合は本手順は不要
 ```    
 $ roslaunch architect_gazebo robotrace_cource.launch    
@@ -49,13 +46,12 @@ $ sudo nano /etc/rc.local     #rc.localを開く
 ```    
 sixad --start    
 ```    
-##シミュレータの操作
-起動    
-PS3 コントローラで操作する場合    
+# シミュレータの起動    
+## PS3 コントローラを使用する場合    
 ```
 $ roslaunch architect_gazebo robotrace_ps3.launch
 ```
-rqtで操作する場合    
+## rqtで操作する場合    
 ```
 $ roslaunch architect_gazebo robotrace_cource.launch
 ```
