@@ -1,6 +1,6 @@
 
 # architect_robot
-このパッケージはライントレースロボットがコースを周回するタイムを競う「ロボトレース」競技のROSとGazeboによるシミュレータです。    
+ライントレースロボットがコースを周回するタイムを競う「ロボトレース」競技のシミュレータを、ROSとGazeboでつくりました。    
 ![image](https://github.com/yossato/architect_robot/blob/master/materials/gazebo.png)    
 [youtubeで見る](https://youtu.be/G1btov_RhXU)    
 このシミュレータには、ロボトレースのコースとサンプルとなるロボットが含まれています。    
