@@ -5,11 +5,11 @@
   <description>The architect_control package</description>
 
 
-  <maintainer email="groadpg@gmail.com">RyodoTanaka</maintainer>
+  <maintainer email="virtualgimbal@xa2.so-net.ne.jp">RyodoTanaka</maintainer>
   <license>BSD</license>
   <url type="repository">http://github.com/CIR-KIT/architect_pkg</url>
   
-  <author email="groadpg@gmail.com">RyodoTanaka</author>
+  <author email="virtualgimbal@xa2.so-net.ne.jp">RyodoTanaka</author>
 
   <buildtool_depend>catkin</buildtool_depend>  
   <run_depend>controller_manager</run_depend>

@@ -4,11 +4,11 @@
   <version>1.0.0</version>
   <description>The architect_bring package</description>
 
-  <maintainer email="groadpg@gmail.com">Ryodo Tanaka</maintainer>
+  <maintainer email="virtualgimbal@xa2.so-net.ne.jp">Yoshiaki Sato</maintainer>
   <license>BSD</license>
   <url type="repository">http://github.com/Nishida-Lab/TC2015</url>
   
-  <author email="groadpg@gmail.com">Ryodo Tanaka</author>
+  <author email="virtualgimbal@xa2.so-net.ne.jp">Yoshiaki Sato</author>
   <buildtool_depend>catkin</buildtool_depend>
   <run_depend>joy_twist</run_depend>
   <run_depend>gim30</run_depend>
