@@ -20,10 +20,10 @@ $ roslaunch architect_gazebo robotrace_ps3.launch
 $ roslaunch architect_gazebo robotrace_cource.launch    
 ```    
 rqtのTopic名に/diff_drive_controller/cmd_velを入力する。    
-# 関連ライブラリのインストール  
+# 関連ライブラリのインストールと初期設定    
 ## 共通のライブラリ    
 $ sudo apt-get install ros-kinetic-gazebo-ros-pkgs ros-kinetic-gazebo-ros-control    
-## PS3コントローラを使用する場合のライブラリ
+## PS3コントローラを使用する場合のライブラリのインストールと初期設定
 PS3 コントローラを使用しない場合は本手順は不要    
 ```    
 $ roslaunch architect_gazebo robotrace_cource.launch    
