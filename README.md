@@ -56,3 +56,8 @@ $ sudo nano /etc/rc.local     #rc.localを開く
 sixad --start    
 ```    
 
+# 作者
+Yoshiaki Sato    
+    
+本パッケージは以下のリポジトリを参考にして作られました。    
+https://github.com/CIR-KIT/fourth_robot_pkg
