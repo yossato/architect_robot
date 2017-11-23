@@ -1,3 +1,0 @@
-<launch>
-  <include file="$(find architect_driver)/launch/architect_driver.launch"/>
-</launch>
