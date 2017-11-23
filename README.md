@@ -1,12 +1,21 @@
 
 # architect_robot
-ライントレースロボットがコースを周回するタイムを競う「ロボトレース」競技のシミュレータです。    
+このパッケージはライントレースロボットがコースを周回するタイムを競う「ロボトレース」競技のROSとGazeboによるシミュレータです。    
 〈ここに競技のYouTube 貼る〉    
 〈ここにシミュレーターのYouTube 貼る〉    
 このシミュレータには、ロボトレースのコースとサンプルとなるロボットが含まれています。    
 シミュレータはROS KineticとGazeboで動作します。    
 
-# 使い方    
+# 使い方  
+## シミュレータの起動    
+### PS3 コントローラを使用する場合    
+```
+$ roslaunch architect_gazebo robotrace_ps3.launch
+```
+### rqtで操作する場合    
+```
+$ roslaunch architect_gazebo robotrace_cource.launch
+```  
 # ROSのインストール    
 # 関連ライブラリのインストール  
 ## PS3コントローラを使用する場合
@@ -46,12 +55,4 @@ $ sudo nano /etc/rc.local     #rc.localを開く
 ```    
 sixad --start    
 ```    
-# シミュレータの起動    
-## PS3 コントローラを使用する場合    
-```
-$ roslaunch architect_gazebo robotrace_ps3.launch
-```
-## rqtで操作する場合    
-```
-$ roslaunch architect_gazebo robotrace_cource.launch
-```
+
