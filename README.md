@@ -25,8 +25,7 @@ rqtのTopic名に/diff_drive_controller/cmd_velを入力する。
 $ sudo apt-get install ros-kinetic-gazebo-ros-pkgs ros-kinetic-gazebo-ros-control    
 ## PS3コントローラを使用する場合のライブラリのインストールと初期設定
 PS3 コントローラを使用しない場合は本手順は不要    
-```    
-$ roslaunch architect_gazebo robotrace_cource.launch    
+```     
 $ sudo apt-get update && sudo apt-get install git dialog build-essential pyqt4-dev-tools libusb-dev libjack-dev libbluetooth-dev python-dbus -y    
 $ git clone --depth 1 https://github.com/falkTX/qtsixa.git    
 $ cd qtsixa    
