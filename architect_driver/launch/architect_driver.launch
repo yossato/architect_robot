@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="architect_driver" type="architect_driver_node" name="architect_driver" output="screen">
+	<rosparam command="load" ns="/architect_driver/property" file="$(find architect_driver)/config/property.yaml" />
+	<rosparam command="load" ns="/architect_driver/property" file="$(find architect_driver)/config/kinematics.yaml" />
+	<rosparam command="load" ns="/architect_driver/imcs01" file="$(find architect_driver)/config/iMCs01.yaml" />
+	<rosparam command="load" ns="/architect_driver/control" file="$(find architect_driver)/config/control.yaml" />
+  </node>
+</launch>

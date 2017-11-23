@@ -1,0 +1,35 @@
+<launch>
+  <master auto="start"/>
+  <!-- MAP SERVER -->
+  <!-- gazebo sim  -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find architect_2dnav_gazebo)/map/playpen_map.yaml" />
+
+  <!-- AMCL -->
+  <include file="$(find architect_2dnav_gazebo)/launch/amcl/amcl.launch"/>
+
+  <!-- MOVE BASE -->
+  <!-- remap the odom topic for local planner -->
+  <node pkg="topic_tools" type="relay" name="relay_odom" args="/diff_drive_controller/odom odom"/>
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+	<!-- COST MAP -->
+    <rosparam file="$(find architect_2dnav_gazebo)/params/costmap/costmap_common.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find architect_2dnav_gazebo)/params/costmap/costmap_common.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find architect_2dnav_gazebo)/params/costmap/local_costmap.yaml" command="load" />
+    <rosparam file="$(find architect_2dnav_gazebo)/params/costmap/global_costmap.yaml" command="load" />
+	<!-- BASE GLOBAL PLANNER -->
+	<rosparam file="$(find architect_2dnav_gazebo)/params/planner/global/navfn_planner.yaml" command="load" />
+	<!-- BASE LOCAL PLANNER -->
+	<rosparam file="$(find architect_2dnav_gazebo)/params/planner/local/dwa_planner.yaml" command="load" />
+	<!-- RECOVERY -->
+	<rosparam file="$(find architect_2dnav_gazebo)/params/planner/recovery_behaviors.yaml" command="load"/>
+	<!-- MOVE BASE -->
+    <param name="controller_frequency" value="5.0" />
+    <param name="controller_patience" value="15.0" />
+    <param name="max_planning_retries" value="10" />
+    <param name="oscillation_timeout" value="10.0" />
+    <param name="clearing_rotation_allowed" value="true" />
+	<!-- remap cmd_vel topic for gazebo -->
+	<remap from="cmd_vel" to="/diff_drive_controller/cmd_vel"/>
+  </node>
+</launch>
+

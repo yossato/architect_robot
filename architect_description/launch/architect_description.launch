@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<launch>
+  <!-- arguments -->
+  <arg name="model" default="$(find architect_description)/robots/architect.urdf.xacro"/>
+  <arg name="gui" default="true" />
+
+  <!-- prameters -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'"/>
+  <param name="use_gui" value="$(arg gui)"/>
+
+  <!-- nodes -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+  <!-- rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find architect_description)/launch/config/architect_description.rviz"/>
+</launch>

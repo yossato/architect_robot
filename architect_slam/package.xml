@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <name>architect_slam</name>
+  <version>0.0.0</version>
+  <description>The architect_slam package</description>
+  
+  <maintainer email="groadpg@gmail.com">Ryodo Tanaka</maintainer>
+  <license>BSD</license>
+  <url type="repository">http://github.com/Nishida-Lab/TC2015</url>
+  
+  <author email="groadpg@gmail.com">Ryodo Tanaka</author>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>rosbag</run_depend>
+  <run_depend>rviz</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>gmaapping</run_depend>
+  <run_depend>cartographer_ros</run_depend>
+
+</package>

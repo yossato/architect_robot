@@ -1,3 +1,0 @@
-<launch>
-  <include file="$(find fourth_robot_driver)/launch/fourth_robot_driver.launch"/>
-</launch>
