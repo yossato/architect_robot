@@ -8,10 +8,6 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
 
-  <arg name="joy_config" default="ps3" />
-  <arg name="joy_dev" default="/dev/input/js0" />
-  <arg name="config_filepath" default="$(find teleop_twist_joy)/config/$(arg joy_config).config.yaml" />
-
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find architect_gazebo)/worlds/robotrace_course.world"/>
