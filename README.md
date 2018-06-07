@@ -4,7 +4,7 @@
 ![image](https://github.com/yossato/architect_robot/blob/master/materials/gazebo.png)    
 [youtubeで見る](https://youtu.be/G1btov_RhXU)    
 このシミュレータには、ロボトレースのコースとサンプルとなるロボットが含まれています。    
-ロボットは足回りのコントローラと、ステレオカメラと、IMUを搭載しています。司令を与えると走り出します。    
+ロボットは足回りのコントローラと、ステレオカメラと、IMUを搭載しています。指令を与えると走り出します。    
 いまのところ自律移動やSLAMは行えません。
 
 ROSのバージョンはKineticに対応します。    
